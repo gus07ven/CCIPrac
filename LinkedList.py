@@ -12,6 +12,8 @@ class SLinkedList:
 
     def display(self):
         node = self.head
+        if node is None:
+            print("Your singly linked list in empty. Please add some data to it.")
         while node is not None:
             print(node.data)
             node = node.next
@@ -33,12 +35,17 @@ class SLinkedList:
             current_node = current_node.next
         current_node.next = Node(data)
 
-    def insert_between_nodes(self, first_node, second_node, data):
-        if first_node is None:
-            print("First node can't be none.")
+    def insert_between_nodes(self, first_node_data, second_node_data, data):
+        if first_node_data is None or second_node_data is None or data is None:
+            print("None is not allowed.")
+            return
+        current_node = self.head
+        while current_node.data != first_node_data:
+            current_node = current_node.next
         new_node = Node(data)
-        first_node.next = new_node
-        new_node.next = second_node
+        new_node.next = current_node.next
+        current_node.next = new_node
+
 
     def remove_node(self, removeNode):
         current_node = self.head
@@ -79,54 +86,42 @@ class SLinkedList:
 
 if __name__ == "__main__":
 
-    # Create nodes
-    monday = Node("Monday")
-    tuesday = Node("Tuesday")
-    wednesday = Node("Wednesday")
-    thursday = Node("Thursday")
-    friday = Node("Friday")
-
-    # Create incomplete list to test
+    # Create singly linked list
     single_linked_list = SLinkedList()
-    single_linked_list.head = monday
-    monday.next = wednesday
-    wednesday.next = thursday
-    thursday.next = friday
+    single_linked_list.insert_node_beginning("Sunday")
     print("1. Initial list:")
     single_linked_list.display()
 
-    # Insert Sunday at beginning of list
-    single_linked_list.insert_node_beginning("Sunday")
-    print("")
-    print("2. List after inserting Sunday at beginning:")
-    single_linked_list.display()
-
-    # Insert Saturday at end of list
+    # Insert Monday and Wednesday
+    single_linked_list.insert_node_end("Monday")
+    single_linked_list.insert_node_end("Wednesday")
+    single_linked_list.insert_node_end("Thursday")
+    single_linked_list.insert_node_end("Friday")
     single_linked_list.insert_node_end("Saturday")
     print("")
-    print("3. List after inserting Saturday at end:")
+    print("2. List after inserting all the days of the week but Tuesday:")
     single_linked_list.display()
 
-    # Insert Wednesday between
+    # Insert Tuesday between Monday and Wednesday
     print("")
-    print("4. List after inserting Tuesday between Monday and Wednesday")
-    single_linked_list.insert_between_nodes(monday, wednesday, "Tuesday")
+    print("3. List after inserting Tuesday between Monday and Wednesday")
+    single_linked_list.insert_between_nodes("Monday", "Wednesday", "Tuesday")
     single_linked_list.display()
 
     # Remove Thursday
     print("")
-    print("5. Removing Thursday from the list")
+    print("4. Removing Thursday from the list")
     single_linked_list.remove_node("Thursday")
     single_linked_list.display()
 
     # Look for Thursday after removing it
     print("")
-    print("6. Looking for Thursday after removing it")
+    print("5. Looking for Thursday after removing it")
     single_linked_list.find_node("Thursday")
     single_linked_list.display()
 
-    # Look for Thursday after removing it
+    # # Look for Monday
     print("")
-    print("7. Looking for Friday")
-    single_linked_list.find_node("Friday")
+    print("6. Looking for Monday")
+    single_linked_list.find_node("Monday")
     single_linked_list.display()
