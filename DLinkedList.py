@@ -47,6 +47,15 @@ class DoublyLinkedList:
         first_node.next = node_to_insert
         second_node.prev = node_to_insert
 
+    def insert_at_end(self, data):
+        current_node = self.head
+        while current_node.next is not None:
+            current_node = current_node.next
+        node_to_insert = Node(data)
+        current_node.next = node_to_insert
+        node_to_insert.prev = current_node
+        node_to_insert.next = None
+
 
 if __name__ == "__main__":
 
@@ -64,6 +73,12 @@ if __name__ == "__main__":
     print("Inserting Wednesday between Tuesday and Thursday:")
     doubly_linked_list.insert_between("Tuesday", "Thursday", "Wednesday")
     doubly_linked_list.display()
+
+    # Insert Saturday at end
+    print("Inserting Saturday at end of doubly linked list")
+    doubly_linked_list.insert_at_end("Saturday")
+    doubly_linked_list.display()
+
 
 
 
