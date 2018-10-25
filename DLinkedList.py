@@ -56,6 +56,31 @@ class DoublyLinkedList:
         node_to_insert.prev = current_node
         node_to_insert.next = None
 
+    # Delete node: node is at head, node is between, node is at end, node is not in list
+    def delete_node(self, data):
+        current_node = self.head
+        if current_node is None:
+            print("The list is empty. There is nothing to delete.")
+            return
+        while current_node is not None:
+            if current_node.data == data and current_node.next is not None:
+                node_to_delete = current_node
+                previous_node = node_to_delete.prev
+                next_node = node_to_delete.next
+                previous_node.next = next_node
+                next_node.prev = previous_node
+                break
+            if current_node.data == data and current_node.next is None:
+                node_to_delete = current_node
+                previous_node = node_to_delete.prev
+                previous_node.next = None
+                break
+            current_node = current_node.next
+            if current_node is None:
+                print("No node has that data. Check that data is correct please.")
+                break
+
+
 
 if __name__ == "__main__":
 
@@ -75,10 +100,14 @@ if __name__ == "__main__":
     doubly_linked_list.display()
 
     # Insert Saturday at end
-    print("Inserting Saturday at end of doubly linked list")
+    print("Inserting Saturday at end of doubly linked list:")
     doubly_linked_list.insert_at_end("Saturday")
     doubly_linked_list.display()
 
+    # Delete Thursday
+    print("Deleting Thursday:")
+    doubly_linked_list.delete_node("Thursday")
+    doubly_linked_list.display()
 
 
 
