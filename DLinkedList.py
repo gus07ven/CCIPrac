@@ -56,7 +56,6 @@ class DoublyLinkedList:
         node_to_insert.prev = current_node
         node_to_insert.next = None
 
-    # Delete node: node is at head, node is between, node is at end, node is not in list
     def delete_node(self, data):
         current_node = self.head
         if current_node is None:
@@ -80,6 +79,19 @@ class DoublyLinkedList:
                 print("No node has that data. Check that data is correct please.")
                 break
 
+    def find_node(self, data):
+        current_node = self.head
+        if current_node is None:
+            print("List is empty. No need to search")
+            return
+        while current_node is not None:
+            if current_node.data == data:
+                print("The node {0} is in the list".format(data))
+                break
+            if current_node.next is None:
+                print("The node {0} was not found in the list".format(data))
+                break
+            current_node = current_node.next
 
 
 if __name__ == "__main__":
@@ -109,6 +121,15 @@ if __name__ == "__main__":
     doubly_linked_list.delete_node("Thursday")
     doubly_linked_list.display()
 
+    # Find Friday
+    print("Searching for Friday:")
+    doubly_linked_list.find_node("Friday")
+    doubly_linked_list.display()
+
+    # Find Thursday after being deleted
+    print("Searching for Thursday after being deleted:")
+    doubly_linked_list.find_node("Thursday")
+    doubly_linked_list.display()
 
 
 
