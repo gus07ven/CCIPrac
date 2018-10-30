@@ -14,7 +14,9 @@ class Queue:
         if self.is_empty() is True:
             print("Queue is empty. Nothing to delete.")
             return
-        self.queue.remove(self.queue[0])
+        element_to_remove = self.queue[0]
+        self.queue.remove(element_to_remove)
+        return "Removing from queue: {0}".format(element_to_remove)
 
     def is_empty(self):
         if len(self.queue) == 0:
@@ -41,11 +43,15 @@ if __name__ == "__main__":
     queue.display()
 
     print("Dequeuing/deleting Monday from queue:")
-    queue.dequeue()
-    queue.display()
+    print(queue.dequeue())
+    print("")
 
     print("Is queue empty?")
     print(queue.is_empty())
+    print("")
+
+    print("Final queue:")
+    print(queue.display())
 
 
 
