@@ -25,10 +25,8 @@ class Stack:
             return self.stack.pop()
 
     def display(self):
-        stack_size = len(self.stack) - 1
-        while stack_size >= 0:
-            print(self.stack[stack_size])
-            stack_size -= 1
+        for element in list(reversed(self.stack)):
+            print(element)
 
 
 if __name__ == "__main__":
