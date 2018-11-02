@@ -28,17 +28,26 @@ class Node:
         if self.right:
             self.right.print_tree()
 
+    def in_order_traversal(self, root):
+        res = []
+        if root:
+            res = self.in_order_traversal(root.left)
+            res.append(root.data)
+            res = res + self.in_order_traversal(root.right)
+        return res
+
 
 if __name__ == "__main__":
 
-    root = Node(12)
-    root.insert(6)
+    root = Node(7)
+    root.insert(16)
     root.insert(14)
     root.insert(3)
     root.insert(5)
     root.insert(2)
-    root.insert(8)
+    root.insert(18)
     root.print_tree()
+    print(root.in_order_traversal(root))
 
 
 
