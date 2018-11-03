@@ -36,6 +36,14 @@ class Node:
             res = res + self.in_order_traversal(root.right)
         return res
 
+    def pre_order_traversal(self, root):
+        res = []
+        if root:
+            res.append(root.data)
+            res = res + self.pre_order_traversal(root.left)
+            res = res + self.pre_order_traversal(root.right)
+        return res
+
 
 if __name__ == "__main__":
 
@@ -46,8 +54,14 @@ if __name__ == "__main__":
     root.insert(5)
     root.insert(2)
     root.insert(18)
+    print("Print tree:")
     root.print_tree()
+    print("")
+    print("In-order traversal of tree:")
     print(root.in_order_traversal(root))
+    print("")
+    print("Pre-order traversal of tree:")
+    print(root.pre_order_traversal(root))
 
 
 
