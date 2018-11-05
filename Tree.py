@@ -44,6 +44,14 @@ class Node:
             res = res + self.pre_order_traversal(root.right)
         return res
 
+    def post_order_traversal(self, root):
+        res = []
+        if root:
+            res = self.post_order_traversal(root.left)
+            res = res + self.post_order_traversal(root.right)
+            res.append(root.data)
+        return res
+
 
 if __name__ == "__main__":
 
@@ -62,6 +70,9 @@ if __name__ == "__main__":
     print("")
     print("Pre-order traversal of tree:")
     print(root.pre_order_traversal(root))
+    print("")
+    print("Post-order traversal of tree:")
+    print(root.post_order_traversal(root))
 
 
 
