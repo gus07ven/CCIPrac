@@ -57,20 +57,29 @@ if __name__ == "__main__":
 
     root = Node(7)
     root.insert(16)
-    root.insert(14)
     root.insert(3)
+    root.insert(14)
     root.insert(5)
     root.insert(2)
     root.insert(18)
+    root.insert(23)
+    root.insert(24)
+
+    print("The root of the tree is: {}".format(root.data))
+    print("")
+
     print("Print tree:")
     root.print_tree()
     print("")
+
     print("In-order traversal of tree:")
     print(root.in_order_traversal(root))
     print("")
+
     print("Pre-order traversal of tree:")
     print(root.pre_order_traversal(root))
     print("")
+
     print("Post-order traversal of tree:")
     print(root.post_order_traversal(root))
 
