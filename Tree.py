@@ -52,6 +52,14 @@ class Node:
             res.append(root.data)
         return res
 
+    def search(self, root, data):
+        if root is None or root.data == data:
+            return root
+        if root.data < data:
+            return self.search(root.right, data)
+        if root.data > data:
+            return self.search(root.left, data)
+
 
 if __name__ == "__main__":
 
@@ -59,11 +67,11 @@ if __name__ == "__main__":
     root.insert(16)
     root.insert(3)
     root.insert(14)
-    root.insert(5)
-    root.insert(2)
-    root.insert(18)
-    root.insert(23)
-    root.insert(24)
+    # root.insert(5)
+    # root.insert(2)
+    # root.insert(18)
+    # root.insert(23)
+    # root.insert(24)
 
     print("The root of the tree is: {}".format(root.data))
     print("")
@@ -82,6 +90,12 @@ if __name__ == "__main__":
 
     print("Post-order traversal of tree:")
     print(root.post_order_traversal(root))
+    print("")
+
+    print("Search for number 14:")
+    result = root.search(root, 14)
+    print(result.data)
+    print("")
 
 
 
