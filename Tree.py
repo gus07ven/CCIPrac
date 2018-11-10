@@ -66,6 +66,28 @@ class Node:
             current = current.left
         return current
 
+    def delete_node(self, root, data):
+        if root is None:
+            return root
+
+        if data < root.data:
+            root.left = self.delete_node(root.left, data)
+        elif data > root.data:
+            root.right = self.delete_node(root.right, data)
+        else:
+            if root.left is None:
+                temp = root.right
+                root = None
+                return temp
+            elif root.right is None:
+                temp = root.left
+                root = None
+                return temp
+            temp = self.min_value_node(root.right)
+            root.data = temp.data
+            root.right = self.delete_node(root.right, temp.data)
+        return root
+
 
 if __name__ == "__main__":
 
@@ -103,6 +125,10 @@ if __name__ == "__main__":
     print(result.data)
     print("")
 
+    print("Delete number 14:")
+    del_result = root.delete_node(root, 14)
+    print(root.in_order_traversal(root))
+    print("")
 
 
 
