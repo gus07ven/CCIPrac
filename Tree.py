@@ -60,6 +60,12 @@ class Node:
         if root.data > data:
             return self.search(root.left, data)
 
+    def min_value_node(self, node):
+        current = node
+        while current.left is not None:
+            current = current.left
+        return current
+
 
 if __name__ == "__main__":
 
