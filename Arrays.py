@@ -2,9 +2,11 @@ from array import *
 
 numbers = array('i', [10, 20, 30, 40, 50])
 
-def display(array):
-    for x in array:
+
+def display(input_array):
+    for x in input_array:
         print(x)
+
 
 # Printing all elements
 print("Printing all elements of array:")
