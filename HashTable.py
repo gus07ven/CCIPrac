@@ -24,6 +24,10 @@ print()
 print("Deleting second person from person table")
 del person_table['Second']
 print(person_table)
+print()
 
-
+# Loop through dictionary
+print("Printing all persons:")
+for key in person_table.keys():
+    print(person_table[key])
 
