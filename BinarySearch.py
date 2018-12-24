@@ -9,7 +9,6 @@ def binary_search(alist, item):
     """
     first = 0
     last = len(alist) - 1
-    midpoint = (first + last) // 2
     found = False
 
     while first <= last and not found:
