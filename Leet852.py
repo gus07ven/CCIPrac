@@ -7,6 +7,19 @@ class Leet852:
     def peak_index_in_mountain_array(a: List[int]) -> int:
         return Leet852.find_peak(a, 0, len(a) - 1)
 
+    @staticmethod
+    def find_peak(a: List[int], lo: int, hi: int) -> int:
+        if hi >= lo:
+            middle = lo + (hi - lo) / 2
+            mid = int(middle)
+            if a[mid - 1] < a[mid] and a[mid] > a[mid + 1]:
+                return int(mid)
+            elif a[mid - 1] > a[mid] and a[mid] > a[mid + 1]:
+                return Leet852.find_peak(a, lo, mid - 1)
+            elif a[mid - 1] < a[mid] and a[mid] < a[mid + 1]:
+                return Leet852.find_peak(a, mid + 1, hi)
+        return -1
+
 
 if __name__ == "__main__":
     mountain = [0, 1, 0]
