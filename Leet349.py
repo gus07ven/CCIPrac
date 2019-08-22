@@ -11,3 +11,10 @@ class Leet349:
         return list(set(nums1) & set(nums2))
 
 
+if __name__ == "__main__":
+    nums1 = [4, 9, 5]
+    nums2 = [9, 4, 9, 8, 4]
+    for i in Leet349.intersection(nums1, nums2):
+        print(i)
+
+
