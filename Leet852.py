@@ -20,6 +20,18 @@ class Leet852:
                 return Leet852.find_peak(a, mid + 1, hi)
         return -1
 
+    @staticmethod
+    def find_peak_iterative(a: List[int]) -> int:
+        lo = 0
+        hi = len(a) - 1
+        while lo < hi:
+            mid = int(lo + (hi - lo) / 2)
+            if a[mid] < a[mid + 1]:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+
 
 if __name__ == "__main__":
     mountain = [0, 1, 0]
@@ -28,3 +40,7 @@ if __name__ == "__main__":
     print(Leet852.peak_index_in_mountain_array(mountain))
     print(Leet852.peak_index_in_mountain_array(mountain2))
     print(Leet852.peak_index_in_mountain_array(mountain3))
+    print("Iterative solution: ")
+    print(Leet852.find_peak_iterative(mountain))
+    print(Leet852.find_peak_iterative(mountain2))
+    print(Leet852.find_peak_iterative(mountain3))
