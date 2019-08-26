@@ -8,6 +8,23 @@ class Leet872:
                 self.left = None
                 self.right = None
 
+    @staticmethod
+    def leaf_similar(root1: TreeNode, root2: TreeNode) -> bool:
+        if root1 is None and root2 is None:
+            return true
+        if root1 is None and root2 is not None:
+            return false
+        if root1 is not None and root2 is None:
+            return false
+
+        leaves1 = getLeaves(root1, [])
+        leaves2 = getLeaves(root2, [])
+
+        if len(leaves1) != len(leaves2):
+            return false
+        else:
+            return leaves1 == leaves2
+
 
 if __name__ == "__main__":
     root = Leet872.TreeNode(5)
