@@ -1,3 +1,5 @@
+from typing import List
+
 
 class Leet872:
 
@@ -11,19 +13,31 @@ class Leet872:
     @staticmethod
     def leaf_similar(root1: TreeNode, root2: TreeNode) -> bool:
         if root1 is None and root2 is None:
-            return true
+            return True
         if root1 is None and root2 is not None:
-            return false
+            return False
         if root1 is not None and root2 is None:
-            return false
+            return False
 
-        leaves1 = getLeaves(root1, [])
-        leaves2 = getLeaves(root2, [])
+        leaves1 = Leet872.get_leaves(root1, [])
+        leaves2 = Leet872.get_leaves(root2, [])
 
         if len(leaves1) != len(leaves2):
-            return false
+            return False
         else:
             return leaves1 == leaves2
+
+    @staticmethod
+    def get_leaves(root: TreeNode, leaves: List) -> List:
+        if root is None:
+            return None
+        if root.left is not None:
+            Leet872.get_leaves(root.left, leaves)
+        if root.left is None and root.right is None:
+            leaves.append(root.val)
+        if root.right is not None:
+            Leet872.get_leaves(root.right, leaves)
+        return leaves
 
 
 if __name__ == "__main__":
@@ -38,4 +52,4 @@ if __name__ == "__main__":
     root2.right = Leet872.TreeNode(6)
     root2.left.left = Leet872.TreeNode(2)
     root2.left.right = Leet872.TreeNode(4)
-    result = Leet872.increasing_BST(root)
+    print(Leet872.leaf_similar(root, root2))
