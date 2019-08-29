@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 
-class RodCut:
+class RodCutter:
 
     def __init__(self, price_table, rod_length):
         self.price_table = price_table
@@ -20,5 +20,5 @@ class RodCut:
 if __name__ == "__main__":
     prices = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
     rod_length = 7
-    rc = RodCut(prices, rod_length)
+    rc = RodCutter(prices, rod_length)
     print(rc.top_down_dyn_prog_imp(rc.price_table, rc.rod_length))
