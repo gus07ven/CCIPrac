@@ -30,6 +30,10 @@ class RodCutter:
         revenue_table[rod_size] = max_revenue
         return max_revenue
 
+    # TODO: implement next
+    def bottom_up_memo(self, price_table: List[int], rod_size: int) -> int:
+        pass
+
 
 if __name__ == "__main__":
     prices = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
@@ -37,3 +41,5 @@ if __name__ == "__main__":
     rc = RodCutter(prices, rod_length)
     print(rc.top_down_dyn_prog_imp(rc.price_table, rc.rod_length))
     print(rc.top_down_memo(rc.price_table, rc.rod_length))
+    print(rc.bottom_up_memo(rc.price_table, rc.rod_length))
+
