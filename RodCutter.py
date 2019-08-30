@@ -43,14 +43,21 @@ class RodCutter:
         revenue_table = [0] * (rod_size + 1)
         opt_first_cut = [0] * (rod_size + 1)
 
-        for j in range(1, rod_size):
+        for j in range(1, rod_size + 1):
             maxRevenue = 0
-            for i in range(1, j):
+            for i in range(1, j + 1):
                 if maxRevenue < price_table[i] + revenue_table[j - i]:
                     maxRevenue = price_table[i] + revenue_table[j - i]
                     opt_first_cut[j] = i
             revenue_table[j] = maxRevenue
         return opt_first_cut
+
+    def print_rod_cutter_solution(self, price_table: List[int], rod_size: int) -> None:
+        opt_first_cut = self.bottom_up_memo_extended(price_table, rod_size)
+        while rod_size > 0:
+            cut = opt_first_cut[rod_size]
+            print(cut)
+            rod_size = rod_size - cut
 
 
 if __name__ == "__main__":
@@ -60,4 +67,6 @@ if __name__ == "__main__":
     print(rc.top_down_dyn_prog_imp(rc.price_table, rc.rod_length))
     print(rc.top_down_memo(rc.price_table, rc.rod_length))
     print(rc.bottom_up_memo(rc.price_table, rc.rod_length))
+    print("The optimal cuts for a rod of length {0:1d}: ".format(rod_length))
+    rc.print_rod_cutter_solution(rc.price_table, rc.rod_length)
 
