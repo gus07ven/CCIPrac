@@ -32,7 +32,13 @@ class RodCutter:
 
     # TODO: implement next
     def bottom_up_memo(self, price_table: List[int], rod_size: int) -> int:
-        pass
+        revenue_table = [0] * (rod_size + 1)
+        for j in range(1, rod_size + 1):
+            maxRevenue = 0
+            for i in range(1, j):
+                maxRevenue = max(maxRevenue, price_table[i] + revenue_table[j - i])
+            revenue_table[j] = maxRevenue
+        return revenue_table[rod_size]
 
 
 if __name__ == "__main__":
