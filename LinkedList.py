@@ -46,7 +46,6 @@ class SLinkedList:
         new_node.next = current_node.next
         current_node.next = new_node
 
-
     def remove_node(self, removeNode):
         current_node = self.head
         if current_node is not None:
